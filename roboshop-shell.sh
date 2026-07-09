@@ -3,7 +3,7 @@
 SG_ID="sg-08e4c0a9a0fac1033"
 AMI_ID="ami-0220d79f3f480ecf5"
 ZONE_ID="Z06337252KMRX8GPBDFEV"
-DOMAIN_NAME= "caws1.in"
+DOMAIN_NAME="caws1.in"
 
 for instance in $@
 do 
@@ -30,13 +30,13 @@ do
             --query 'Reservations[].Instances[].PrivateIpAddress' \
             --output text
         )
-        RECORD_NAME="$intance.$DOMAIN_NAME"
+        RECORD_NAME="$instance.$DOMAIN_NAME"
     fi
 
     echo " IP Address : $IP "
     
     aws route53 change-resource-record-sets \
-    --hosted-zone-id $ZONE_ID 
+    --hosted-zone-id $ZONE_ID \
     --change-batch '
      {
         "Comment" : " Update A record ",
@@ -57,7 +57,7 @@ do
            }
         ]
     }
-
+ '
     echo "record update for '$instance'"  
 
 done
