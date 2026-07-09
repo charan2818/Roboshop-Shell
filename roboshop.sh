@@ -2,7 +2,7 @@
 
 SG_ID="sg-08e4c0a9a0fac1033"
 AMI_ID="ami-0220d79f3f480ecf5"
-ZONE_ID=
+ZONE_ID="Z06337252KMRX8GPBDFEV"
 DOMAIN_NAME= "caws1.in"
 
 for instance in $@
@@ -58,9 +58,6 @@ do
         ]
     }
 
-    echo "record update for '$instance' "  
+    echo "record update for '$instance'"  
 
 done
-
-
-
